@@ -8,24 +8,21 @@ class Router:
         self.routes: List[Tuple[str, str, Callable]] = []
 
     def add_route(self, method: str, path: str, handler: Callable) -> None:
-        self.routes.append((method.upper(), path, handler))
+        """Register a new route."""
+        # TODO: store the method, normalized path and handler so that it can be
+        # matched later in ``match``.
+        raise NotImplementedError
 
     def match(self, method: str, path: str) -> Tuple[Optional[Callable], Dict[str, str]]:
-        for route_method, route_path, handler in self.routes:
-            params = self._match_path(route_path, path)
-            if route_method == method and params is not None:
-                return handler, params
-        return None, {}
+        """Return the first matching handler and extracted parameters."""
+        # TODO: iterate over registered routes and use ``_match_path`` to
+        # determine if the path matches. Return the handler and parameters when
+        # a match is found or ``(None, {})`` otherwise.
+        raise NotImplementedError
 
     def _match_path(self, route_path: str, request_path: str) -> Optional[Dict[str, str]]:
-        route_parts = route_path.strip('/').split('/')
-        request_parts = request_path.strip('/').split('/')
-        if len(route_parts) != len(request_parts):
-            return None
-        params: Dict[str, str] = {}
-        for route_part, req_part in zip(route_parts, request_parts):
-            if route_part.startswith(':'):
-                params[route_part[1:]] = req_part
-            elif route_part != req_part:
-                return None
-        return params
+        """Compare a route path against a request path."""
+        # TODO: split the paths and compare each segment. Support parameters
+        # prefixed with ':' in the route path and return them in a dictionary
+        # when the paths match. Return ``None`` if they do not match.
+        raise NotImplementedError

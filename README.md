@@ -26,3 +26,18 @@ curl http://localhost:8080/hello
 ```
 
 See `example_server.py` for more routes and usage examples.
+
+## Coding Challenges
+
+Several core functions have been replaced with TODOs. See the `challenges` directory for instructions on implementing the router, request parsing, response helpers and the main application logic.
+
+## Running Tests
+
+All exercises are backed by unit tests using `pytest`. Install the dependency and run the test suite with:
+
+```bash
+pip install pytest
+python -m pytest -v
+```
+
+The tests print helpful messages so you can easily track which portions of the framework you have completed.

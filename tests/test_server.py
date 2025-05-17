@@ -36,11 +36,13 @@ def wait_for_server(port=9090, timeout=5):
 class ServerTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        print("Starting test server")
         thread = threading.Thread(target=start_server, daemon=True)
         thread.start()
         assert wait_for_server()
 
     def test_get(self):
+        print("Server GET request test")
         conn = http.client.HTTPConnection('127.0.0.1', 9090)
         conn.request('GET', '/test')
         resp = conn.getresponse()
@@ -50,6 +52,7 @@ class ServerTests(unittest.TestCase):
         self.assertEqual(body, 'ok')
 
     def test_post_json(self):
+        print("Server POST request test")
         conn = http.client.HTTPConnection('127.0.0.1', 9090)
         headers = {'Content-Type': 'application/json'}
         conn.request('POST', '/mirror', body='{"foo": "bar"}', headers=headers)
