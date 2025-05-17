@@ -19,14 +19,9 @@ class Request:
         self.params: Dict[str, str] = {}
 
     def _read_body(self, handler: BaseHTTPRequestHandler) -> Optional[Any]:
-        length = int(handler.headers.get('Content-Length', 0))
-        if length == 0:
-            return None
-        data = handler.rfile.read(length)
-        content_type = handler.headers.get('Content-Type', '')
-        if 'application/json' in content_type:
-            try:
-                return json.loads(data)
-            except json.JSONDecodeError:
-                return None
-        return data.decode('utf-8')
+        """Read and parse the request body."""
+        # TODO: use the ``Content-Length`` header to read the request body from
+        # ``handler.rfile``. If the content type is JSON, decode and return the
+        # parsed object. Otherwise return the decoded text. If no body is
+        # present, return ``None``.
+        raise NotImplementedError

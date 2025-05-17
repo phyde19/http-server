@@ -26,3 +26,7 @@ curl http://localhost:8080/hello
 ```
 
 See `example_server.py` for more routes and usage examples.
+
+## Coding Challenges
+
+Several core functions have been replaced with TODOs. See the `challenges` directory for instructions on implementing the router, request parsing, response helpers and the main application logic.
