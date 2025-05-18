@@ -13,23 +13,15 @@ class Response:
         self._sent = False
 
     def send(self, body: Any, status: int = 200, headers: Dict[str, str] | None = None) -> None:
-        if self._sent:
-            return
-        self._handler.send_response(status)
-        headers = headers or {}
-        if isinstance(body, (dict, list)):
-            headers.setdefault('Content-Type', 'application/json')
-            body = json.dumps(body)
-        for name, value in headers.items():
-            self._handler.send_header(name, value)
-        if isinstance(body, str):
-            body = body.encode('utf-8')
-        self._handler.send_header('Content-Length', str(len(body)))
-        self._handler.end_headers()
-        self._handler.wfile.write(body)
-        self._sent = True
+        """Send a response to the client."""
+        # TODO: write the HTTP status and headers using ``self._handler``. If
+        # ``body`` is a dict or list, serialize it as JSON and set the
+        # ``Content-Type`` header appropriately. Encode strings as UTF-8 before
+        # writing and ensure the response is only sent once.
+        raise NotImplementedError
 
     def json(self, obj: Any, status: int = 200, headers: Dict[str, str] | None = None) -> None:
-        headers = headers or {}
-        headers.setdefault('Content-Type', 'application/json')
-        self.send(json.dumps(obj), status=status, headers=headers)
+        """Convenience method for sending JSON data."""
+        # TODO: serialize ``obj`` to JSON and call ``send`` with the correct
+        # headers.
+        raise NotImplementedError

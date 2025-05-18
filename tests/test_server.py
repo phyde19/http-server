@@ -48,6 +48,7 @@ class ServerTests(unittest.TestCase):
         conn.close()
         self.assertEqual(resp.status, 200)
         self.assertEqual(body, 'ok')
+        print('GET route responded with:', body)
 
     def test_post_json(self):
         conn = http.client.HTTPConnection('127.0.0.1', 9090)
@@ -58,6 +59,7 @@ class ServerTests(unittest.TestCase):
         conn.close()
         self.assertEqual(resp.status, 200)
         self.assertIn('"foo": "bar"', data)
+        print('POST JSON echoed:', data)
 
 
 if __name__ == '__main__':

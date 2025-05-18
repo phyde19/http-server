@@ -26,3 +26,23 @@ curl http://localhost:8080/hello
 ```
 
 See `example_server.py` for more routes and usage examples.
+
+## Coding Challenges
+
+Several core functions have been replaced with TODOs. See the `challenges` directory for instructions on implementing the router, request parsing, response helpers and the main application logic.
+
+## Running the Tests
+
+Install `pytest` if you haven't already:
+
+```bash
+pip install pytest
+```
+
+Run the suite with verbose output to see progress:
+
+```bash
+python -m pytest -v
+```
+
+The tests print helpful messages so you can track which challenge pieces are working.
